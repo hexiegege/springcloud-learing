@@ -1,0 +1,27 @@
+#配置执行器拦截路径
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+#执行器端口
+  server:
+    port: 8083
+#tomcat端口
+server:
+  port: 8082
+spring:
+  application:
+    name: hello-service
+  main:
+      allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
+eureka:
+  client:
+    service-url: # EurekaServer的地址，现在是自己的地址，如果是集群，需要加上其它Server的地址。
+      defaultZone: http://127.0.0.1:1111/eureka,http://127.0.0.1:1112/eureka
+  instance:
+    prefer-ip-address: true #当调用getHostname获取实例的hostname时，返回ip而不是host
+    ip-address: 127.0.0.1 #指定自己的ip信息，不指定的话会自己寻找
+    lease-expiration-duration-in-seconds: 90 #90s得不到续约信息就默认为服务挂了
+    lease-renewal-interval-in-seconds: 30  #每隔30s向服务发送一次续约
+    #instance-id: ${spring.application.name}:${random.int}  #实例名配置

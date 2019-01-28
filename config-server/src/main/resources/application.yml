@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/hexiegege/SpringCloudLearning/
+          search-paths: config-repo
+          username: 18519122415
+          password: shanfa.0315
+server:
+  port: 7001

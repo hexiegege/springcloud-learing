@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: api-gateway
+server:
+  port: 5555
+# eureka
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+
+# routes to url
+zuul:
+  routes:
+    api-a-url:
+      path: /api-a-url/**
+      url: http://localhost:8080/
+# routes to serviceId
+    api-a:
+      path: /api-a/**
+      serviceId: hello-service
+    api-b:
+      path: /api-b/**
+      serviceId: feign-consumer
+# routes to local forward 转发到本地网关
+    api-b-url:
+      path: /api-b-url/**
+      url: forward:/local

@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: turbine
+server:
+  port: 2002
+management:
+  server:
+    port: 2003
+eureka:
+  client:
+    cn.eartech.helloserviceapi.service-url:
+      defaultZone: http://127.0.0.1:1111/eureka
+turbine:
+  app-config: RIBBON-CONSUMER  #收集监控信息的服务名
+  combine-host-port: true   #同一主机上的服务可以通过ip+port区分
+  cluster-name-expression: "default" #集群名称

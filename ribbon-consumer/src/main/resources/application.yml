@@ -1,0 +1,44 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: ribbon-consumer
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true # 开启Spring Cloud的重试功能
+eureka:
+  client:
+    cn.eartech.helloserviceapi.service-url: # EurekaServer地址
+      defaultZone: http://127.0.0.1:1112/eureka,http://127.0.0.1:1111/eureka
+    registry-fetch-interval-seconds: 5 # 重新获取服务信息间隔时间
+  instance:
+    prefer-ip-address: true # 当其它服务获取地址时提供ip而不是hostname
+    ip-address: 127.0.0.1 # 指定自己的ip信息，不指定的话会自己寻找
+#负载均衡
+hello-service:
+  ribbon:
+    # 负载均衡的调用规则  轮询（默认）或随机等等
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #值就是IRule的实现类。
+    ConnectTimeout: 250 # Ribbon的连接超时时间
+    ReadTimeout: 1000 # Ribbon的数据读取超时时间
+    OkToRetryOnAllOperations: true # 是否对所有操作都进行重试
+    MaxAutoRetriesNextServer: 1 # 切换实例的重试次数
+    MaxAutoRetries: 2 # 对当前实例的重试次数
+#断路器
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000 # 设置hystrix的超时时间为6000ms要大于Ribbon的超时时间
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /act
+  endpoint:
+      health:
+        show-details: always

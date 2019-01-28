@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: turbine-amqp
+server:
+  port: 2004
+management:
+  server:
+    port: 2005
+eureka:
+  client:
+    cn.eartech.helloserviceapi.service-url:
+      defaultZone: http://127.0.0.1:1111/eureka

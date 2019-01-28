@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>cn.eartech</groupId>
+	<artifactId>cloud</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>cloud</name>
+	<description>瞧一瞧SpringCloud</description>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+	<modules>
+		<module>eureka-server</module>
+		<module>eureka-server01</module>
+		<module>hello-cn.eartech.helloserviceapi.service</module>
+		<module>hello-service01</module>
+		<module>ribbon-consumer</module>
+		<module>user-cn.eartech.helloserviceapi.service</module>
+	</modules>
+</project>
